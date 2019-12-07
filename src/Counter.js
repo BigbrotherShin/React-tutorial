@@ -1,30 +1,27 @@
 import React, { useReducer } from 'react';
 
 function reducer(state, action) {
-  switch (action.type) {
-    case 'INCREMENT':
+  switch(action.type) {
+    case 'NUMBER_INCREMENT':
       return state + 1;
-    case 'DECREMENT':
+    case 'NUMBER_DECREMENT':
       return state - 1;
     default:
       return state;
-      // 또는 throw new Error('Unhandled action');
   }
 }
 
 function Counter() {
-  
   const [number, dispatch] = useReducer(reducer, 0);
+
   const onIncrease = () => {
-    dispatch({
-      type: 'INCREMENT'
-    });
-  };
+    dispatch({ type: 'NUMBER_INCREMENT' });
+  }
+
   const onDecrease = () => {
-    dispatch({
-      type: 'DECREMENT'
-    });
-  };
+    dispatch({ type: 'NUMBER_DECREMENT' });
+  }
+
   return (
     <div>
       <h1>{number}</h1>
@@ -33,5 +30,6 @@ function Counter() {
     </div>
   )
 }
+
 
 export default Counter;
