@@ -1,4 +1,4 @@
-import { useState, useCallback, useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 
 const reducer = (form, action) => {
   switch (action.type) {
@@ -9,6 +9,8 @@ const reducer = (form, action) => {
       };
     case 'RESET':
       return action.initialForm;
+    default:
+      return new Error('Not Handdled');
   }
 };
 
@@ -33,7 +35,7 @@ function useInputs(initialForm) {
       type: 'RESET',
       initialForm,
     });
-  });
+  }, []);
 
   return [form, onChange, reset];
 };
